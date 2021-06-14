@@ -1,6 +1,7 @@
 /* eslint-disable space-before-function-paren */
 /* eslint-disable no-undef */
 const hre = require('hardhat');
+const { Json } = require('./Json');
 
 async function main() {
   // Hardhat always runs the compile task when running scripts with its command
@@ -21,6 +22,8 @@ async function main() {
   // Attendre que le contrat soit réellement déployé, cad que la transaction de déploiement
   // soit incluse dans un bloc
   await greeter.deployed();
+
+  await Json(greeter.address);
 
   // Afficher l'adresse de déploiement
   console.log('Greeter deployed to:', greeter.address);
